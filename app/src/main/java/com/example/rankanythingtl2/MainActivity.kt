@@ -29,14 +29,10 @@ class MainActivity : AppCompatActivity() {
 
         imageView.setOnLongClickListener {
 
-            val clipText = "this our text"
-            val item = ClipData.Item(clipText)
-            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
-            val data = ClipData(clipText, mimeTypes, item)
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
-            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
-            it.visibility = View.VISIBLE
+            it.startDragAndDrop(null, dragShadowBuilder, it, 0)
+            it.visibility = View.INVISIBLE
             true
         }
     }
@@ -44,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     private val dragListener = View.OnDragListener { v, e ->
         when (e.action) {
             DragEvent.ACTION_DRAG_STARTED -> {
-                e.clipDescription.hasMimeType((ClipDescription.MIMETYPE_TEXT_PLAIN))
                 true
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
@@ -59,14 +54,9 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DROP -> {
-                val item = e.clipData.getItemAt(0)
-                val dragData = item.text
-                Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
+
 
                 v.invalidate()
-
-
-                layoutInflater.inflate(R.layout.activity_main, null)
 
                 val view = e.localState as View
                 val owner = view.parent as ViewGroup
