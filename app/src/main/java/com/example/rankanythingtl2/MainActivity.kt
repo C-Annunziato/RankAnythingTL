@@ -20,12 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dragView: FrameLayout = findViewById(R.id.drag_view)
+        val dragContainer: FrameLayout = findViewById(R.id.drag_container)
         val imageView: ImageView = findViewById(R.id.image_view)
-        val fl1: FrameLayout = findViewById(R.id.fl_1)
 
-        fl1.setOnDragListener(dragListener)
-        dragView.setOnDragListener(dragListener)
+        dragContainer.setOnDragListener(dragListener)
 
         imageView.setOnLongClickListener {
 

@@ -49,7 +49,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/drag_view"
+            android:id="@+id/drag_container"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/white"
