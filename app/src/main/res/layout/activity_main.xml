@@ -50,8 +50,8 @@
 
         <FrameLayout
             android:id="@+id/drag_container"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@color/white"
             android:layout_columnWeight="1"
             android:layout_margin="10dp">

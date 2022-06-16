@@ -36,36 +36,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val dragListener = View.OnDragListener { v, e ->
+
+        val view = e.localState as View
+
         when (e.action) {
             DragEvent.ACTION_DRAG_STARTED -> {
                 true
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
-                v.invalidate()
+                v.alpha = 0.3f
                 true
             }
             DragEvent.ACTION_DRAG_LOCATION -> {
                 true
             }
             DragEvent.ACTION_DRAG_EXITED -> {
-                v.invalidate()
+                v.alpha = 1.0f
                 true
             }
             DragEvent.ACTION_DROP -> {
 
 
-                v.invalidate()
-
-                val view = e.localState as View
                 val owner = view.parent as ViewGroup
                 owner.removeView(view)
 
-
                 val destination = v as FrameLayout
-                destination.addView(v)
+                destination.addView(view)
 
                 v.visibility = View.VISIBLE
-
+                view.visibility = View.VISIBLE
+                v.invalidate()
                 true
             }
 
